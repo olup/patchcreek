@@ -11,14 +11,13 @@ import (
 	"github.com/rs/cors"
 )
 
-// Subscriber is a subscriber
-type Subscriber struct {
-	c    TopicChannel
-	open bool
-}
-
 // TopicChannel is a channel of string
 type TopicChannel chan string
+
+// Subscriber is a subscriber
+type Subscriber struct {
+	c TopicChannel
+}
 
 // Topic is a slice of TopicChannel
 type Topic []Subscriber
@@ -39,7 +38,7 @@ func channelHandler(w http.ResponseWriter, r *http.Request) {
 	topic := vars["topic"]
 
 	if r.Method == "GET" {
-		sub := Subscriber{make(chan string), true}
+		sub := Subscriber{make(chan string)}
 
 		if _, ok := myRegistry[topic]; ok {
 			myRegistry[topic] = append(myRegistry[topic], sub)
