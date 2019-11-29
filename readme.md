@@ -1,0 +1,1 @@
+A naive and quite basic implementation of an interesting project found on Hacker News : [patchbay.pub](https://news.ycombinator.com/item?id=21639066). I was especially interested by the Pub/Sub simple mechanism as a little exercise to practice easy golang concepts.
